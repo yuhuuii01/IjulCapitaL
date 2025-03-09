@@ -1,0 +1,353 @@
+<<<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IjulCapitaL - Maritime Investments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #002855 0%, #006994 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .navbar {
+            background: rgba(0, 40, 85, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00C897;
+        }
+
+        .logo {
+            background: linear-gradient(45deg, #00C897, #0BCCE3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2rem;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            float: right;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00C897;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300%;
+            height: 150px;
+            background: 
+                linear-gradient(transparent 60%, rgba(255,255,255,0.2)),
+                url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path d="M 0 70 Q 250 40 500 70 T 1000 70" fill="%2300C897" opacity="0.6"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path d="M 0 50 Q 125 80 250 50 T 500 50 Q 625 20 750 50 T 1000 50" fill="%230BCCE3" opacity="0.8"/></svg>');
+            animation: waves 12s infinite linear;
+            z-index: 0;
+            background-size: 50% 100%;
+            background-position: 0 100%;
+        }
+
+        @keyframes waves {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 300%;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 50" xmlns="http://www.w3.org/2000/svg"><path d="M 0 30 Q 100 45 200 30 T 400 30 Q 500 15 600 30 T 800 30 Q 900 45 1000 30 L 1000 50 L 0 50 Z" fill="%23FFFFFF" opacity="0.3"/></svg>');
+            animation: foam 6s infinite linear;
+            background-size: 50% 100%;
+        }
+
+        @keyframes foam {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .splash-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .splash {
+            position: absolute;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            animation: splash 1.5s infinite;
+        }
+
+        @keyframes splash {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        .wave-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300%;
+            height: 200px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg"><path d="M 0 150 Q 500 120 1000 150 L 1000 200 L 0 200 Z" fill="%23002855" opacity="0.5"/></svg>');
+            animation: deep-wave 18s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes deep-wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .services {
+            padding: 8rem 5% 5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00C897, #0BCCE3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact {
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 C 200 100 400 0 600 50 S 800 0 1000 50 L 1000 100 L 0 100 Z" fill="%23002855"/></svg>');
+            background-size: cover;
+            transform: rotate(180deg);
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-media a {
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-media a:hover {
+            transform: translateY(-3px);
+            color: #00C897;
+        }
+
+        footer {
+            background: #001a33;
+            padding: 2rem 5%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-layer"></div>
+    
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-anchor"></i>
+            IjulCapitaL
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">tentanng</a>
+            <a href="#services">Layanan</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="splash-effect">
+            <div class="splash" style="left:20%; bottom:15%"></div>
+            <div class="splash" style="left:70%; bottom:10%"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Wading throungh <br>sustainable future Investments</h1>
+            <p>Mengarungi investasi masa depan berkelanjutan Memimpin Inovasi dalam Pengelolaan Sumber Daya Alam Laut</p>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="service-card">
+            <i class="fas fa-ship"></i>
+            <h3>Investasi Maritim</h3>
+            <p>Pengembangan berkelanjutan sumber daya kelautan dan perikanan</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-water"></i>
+            <h3>Pengelolaan Pantai</h3>
+            <p>Konservasi dan pemanfaatan ekosistem pesisir secara bertanggung jawab</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-fish"></i>
+            <h3>Budi Daya Laut</h3>
+            <p>Inovasi dalam akuakultur modern berteknologi tinggi yaitu bogon same ngedek</p>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Berlayar Bersama Kami</h2>
+        <div class="contact-info">
+            <p>
+                <a href="tel:08228311925" class="clickable-icon">
+                    <i class="fas fa-phone"></i> 0822-8311-9257
+                </a>
+            </p>
+            <p>
+                <a href="https://instagram.com/_zullkrr" target="_blank">
+                    <i class="fab fa-instagram"></i> _zullkrr
+                </a>
+            </p>
+        </div>
+        
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/_zullkrr" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2020 IjulCapitaL - Menjaga Kelestarian Laut iwakk</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashContainer = document.querySelector('.splash-effect');
+            
+            function createSplash() {
+                const splash = document.createElement('div');
+                splash.className = 'splash';
+                splash.style.left = Math.random() * 100 + '%';
+                splash.style.bottom = Math.random() * 20 + '%';
+                splash.style.animationDelay = Math.random() * 2 + 's';
+                splashContainer.appendChild(splash);
+                
+                setTimeout(() => splash.remove(), 1500);
+            }
+            
+            setInterval(createSplash, 2000);
+        });
+    </script>
+</body>
+</html>
